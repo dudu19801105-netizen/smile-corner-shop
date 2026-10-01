@@ -1,21 +1,47 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smile Corner Shop</title><style>
-body{margin:0;font-family:system-ui,-apple-system,"Segoe UI","Noto Sans TC",sans-serif;background:#0b1220;color:#eef4ff;line-height:1.65}
-a{color:inherit;text-decoration:none}.wrap{max-width:1100px;margin:auto;padding:0 20px}
-header{position:sticky;top:0;background:#0a1322;border-bottom:1px solid #263a60}
-.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
-.brand{font-weight:900}.brand span{color:#67b7ff}.links{display:flex;gap:16px;flex-wrap:wrap;color:#a9b8d0}
-.hero{padding:70px 0;display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
-h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1;margin:.2em 0}h2{font-size:2rem}
-p{color:#a9b8d0}.card,.product,.panel{background:#111b30;border:1px solid #263a60;border-radius:18px;padding:20px}
-.btn{display:inline-block;padding:11px 16px;border-radius:11px;border:1px solid #263a60;font-weight:800;margin:8px 8px 0 0}
-.primary{background:#67b7ff;color:#07111f;border-color:#67b7ff}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.product{display:flex;flex-direction:column;min-height:340px}.visual{min-height:150px;border-radius:14px;border:1px solid #263a60;background:#17233a;display:flex;align-items:center;justify-content:center;text-align:center;color:#a9b8d0}
-.tags{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}.tag{border:1px solid #263a60;border-radius:999px;padding:4px 9px;font-size:.76rem;color:#9ee6c4}
-.bottom{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:10px}.buy{padding:9px 12px;border-radius:10px;background:#1b2945;font-weight:800}
-section{padding:45px 0}.crumb{padding-top:22px;color:#a9b8d0;font-size:.9rem}footer{border-top:1px solid #263a60;padding:30px 0 45px;color:#a9b8d0}
-@media(max-width:800px){.hero,.grid{grid-template-columns:1fr}}
-</style></head>
-<body><header><div class="wrap nav"><div class="brand">SMILE CORNER <span>SHOP</span></div><div class="links"><a href="index.html">首頁</a><a href="books.html">書籍商店</a></div></div></header>
-<main class="wrap"><section class="hero"><div><h1>Smile Corner Shop</h1><p>從小型零售網站開始，先把書籍整理好，讓顧客看得懂、買得到，再慢慢擴大。</p><a class="btn primary" href="books.html">進入書籍商店</a></div><div class="card"><h2>目前主打書籍</h2><p>每一本書都有自己的商品卡與獨立商品頁，購買按鈕直接連到 Amazon。</p></div></section>
-<section><h2>精選上架</h2><div class="grid"><article class="product"><div class="visual">How to Build a PC for Beginners<br>書封位置</div><h3>How to Build a PC for Beginners</h3><p>A simple step-by-step guide to choosing parts, building your computer, installing Windows, and getting your PC ready.</p><div class="tags"><span class="tag">PC Building</span><span class="tag">Beginners</span></div><div class="bottom"><span>Amazon</span><a class="buy" href="book-how-to-build-a-pc.html">查看商品</a></div></article></div></section></main>
-<footer><div class="wrap">Smile Corner Shop · Version 0.4</div></footer></body></html>
+<!doctype html><html lang="zh-Hant"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Smile Corner Shop | Books, Ideas & Creative Worlds</title>
+<meta name="description" content="Smile Corner Shop 是 Smile Corner 的獨立書店與作品入口，收錄科技書、伺服器與雲端、植物書與妖怪村創作。">
+<link rel="stylesheet" href="style.css">
+</head><body>
+<header><div class="wrap nav"><a class="brand" href="index.html">SMILE CORNER <span>SHOP</span></a>
+<nav class="links"><a href="index.html">首頁</a><a href="books.html">書籍</a><a href="#categories">分類</a><a href="#youtube">YouTube</a><a href="#about">關於</a></nav></div></header>
+
+<main>
+<div class="wrap">
+<section class="hero">
+<div><div class="kicker">Independent Bookshop • Author Hub</div>
+<h1>Books that keep growing.</h1>
+<p>Smile Corner Shop 是我們自己的作品總部。這裡會逐步收錄科技、PC、Server、Cloud、植物與妖怪村等作品，也保留 Amazon 購買管道，未來再加入 Smile Corner 自家販售。</p>
+<div class="actions"><a class="btn primary" href="books.html">逛書店</a><a class="btn secondary" href="#categories">看分類</a></div>
+</div>
+<div class="card hero-card"><div class="kicker">現在的方向</div><h2>先把店做好，再慢慢長大。</h2>
+<p>目前先以書籍展示與導購為主，之後可擴充自家訂單、付款、數位下載與少量印刷。</p>
+<div class="mini"><div class="stat"><strong>4</strong><span>主要書系方向</span></div><div class="stat"><strong>1</strong><span>已建立獨立商品頁</span></div></div></div>
+</section>
+
+<section id="categories"><div class="section-head"><div><div class="kicker">Browse by collection</div><h2>書籍分類</h2></div><a class="btn ghost" href="books.html">查看全部書籍</a></div>
+<div class="grid4">
+<a class="card category" href="books.html#pc"><b>PC & Hardware</b><small>PC 組裝、維修、Windows、BIOS 與實用電腦指南。</small></a>
+<a class="card category" href="books.html#server"><b>Server & Cloud</b><small>Home Server、NAS、Private Cloud、AI Server 與運算基礎設施。</small></a>
+<a class="card category" href="books.html#plants"><b>Plants & Nature</b><small>植物家族、種子、扦插、嫁接與自然學習。</small></a>
+<a class="card category" href="books.html#monster"><b>Monster Village</b><small>妖怪村世界、搞笑故事、活動書與未來延伸作品。</small></a>
+</div></section>
+
+<section><div class="section-head"><div><div class="kicker">Featured book</div><h2>目前精選</h2></div></div>
+<div class="grid3"><article class="product">
+<div class="cover">How to Build a PC for Beginners<small>Book cover image will be added here</small></div>
+<h3>How to Build a PC for Beginners</h3>
+<p>A simple step-by-step guide to choosing parts, building your computer, installing Windows, and getting your PC ready.</p>
+<div class="tags"><span class="tag">PC Building</span><span class="tag">Beginners</span><span class="tag">Windows</span></div>
+<div class="product-foot"><span class="price">Available on Amazon</span><a class="btn secondary" href="book-how-to-build-a-pc.html">查看商品</a></div>
+</article></div></section>
+
+<section id="youtube"><div class="panel"><div class="grid2"><div><div class="kicker">Video channel</div><h2>YouTube 入口</h2><p>未來這裡會連到 Smile Corner 的 YouTube，讓讀者可以從影片進書店，也能從書店回到影片。</p></div><div class="notice">YouTube 頻道網址尚未加入。等你把頻道網址給我，我就把正式按鈕接上。</div></div></div></section>
+
+<section id="about"><div class="panel"><div class="kicker">About Smile Corner</div><h2>不只是一間 Amazon 導購頁。</h2>
+<p>Smile Corner Shop 的長期方向是成為獨立書店與作品平台。Amazon 會保留作為合作銷售管道之一，但網站本身也會逐步加入自家商品、訂單與直接販售能力。</p></div></section>
+</div></main>
+
+<footer><div class="wrap footer-grid"><div><strong>Smile Corner Shop</strong><p>Books, ideas, technology, plants and stories.</p></div><div><strong>Shop</strong><p><a href="books.html">All Books</a><br><a href="#categories">Collections</a></p></div><div><strong>Roadmap</strong><p>Direct Shop<br>Digital Downloads<br>More Books</p></div></div></footer>
+</body></html>
