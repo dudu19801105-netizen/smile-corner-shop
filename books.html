@@ -8,11 +8,12 @@
 <section><div class="kicker">Book catalog</div><h1 style="font-size:clamp(3rem,7vw,5.5rem)">書籍商店</h1>
 <p>Smile Corner 的書庫正在持續增加。已出版作品保留 Amazon 購買入口，準備中的新書先放進自己的書庫，不亂填不存在的購買連結。</p>
 <div class="actions"><a class="btn primary" href="https://www.amazon.com/stores/Smil-Corner-Smile-Corner/author/B0GSMCS9KP" target="_blank" rel="noopener noreferrer">Shop All Books on Amazon</a></div>
-<div class="searchbar"><input id="bookSearch" type="search" placeholder="搜尋書名、主題或關鍵字…"></div>
+<div class="searchbar"><input id="bookSearch" type="search" aria-label="搜尋書名或主題" placeholder="搜尋書名、主題或關鍵字…"></div>
 <div class="filters"><button class="filter active" data-filter="all">全部</button><button class="filter" data-filter="pc">PC / AI / Learning</button><button class="filter" data-filter="server">Server & Cloud</button><button class="filter" data-filter="plants">Plants</button><button class="filter" data-filter="monster">Monster Village</button></div>
+<p id="resultCount" role="status" aria-live="polite">書庫載入中…</p><div id="emptyResults" class="notice hidden" role="status">找不到符合條件的書籍，請試試其他關鍵字，或選擇「全部」。</div>
 </section>
 
-<section id="pc"><div class="section-head"><div><div class="kicker">PC, AI & Learning</div><h2>PC / Windows / AI / Coding</h2></div></div>
+<section id="pc" data-book-section><div class="section-head"><div><div class="kicker">PC, AI & Learning</div><h2>PC / Windows / AI / Coding</h2></div></div>
 <div class="grid3">
 <article class="product" data-book data-category="pc"><div class="cover">How to Build a PC for Beginners<small>PC Building • Windows • Beginners</small></div>
 <h3>How to Build a PC for Beginners</h3><p>A Simple Step-by-Step Guide to Choosing Parts, Building Your Computer, Installing Windows, and Getting Your PC Ready.</p>
@@ -35,7 +36,7 @@
 <div class="product-foot"><span class="price">Coming Soon</span><span class="tag">Grades 4–6</span></div></article>
 </div></section>
 
-<section id="server"><div class="section-head"><div><div class="kicker">Server & Cloud</div><h2>Server / NAS / Cloud</h2></div></div>
+<section id="server" data-book-section><div class="section-head"><div><div class="kicker">Server & Cloud</div><h2>Server / NAS / Cloud</h2></div></div>
 <div class="grid3">
 <article class="product" data-book data-category="server"><div class="cover">Private Cloud & Home Server<small>Advanced Guide</small></div>
 <h3>Private Cloud & Home Server Advanced Guide</h3><p>Build a Secure Personal Cloud for Storage, Backups, Remote Access, Media, Containers, and Home Automation.</p>
@@ -43,7 +44,7 @@
 <div class="product-foot"><span class="price">Book in catalog</span><span class="tag">Advanced</span></div></article>
 </div></section>
 
-<section id="plants"><div class="section-head"><div><div class="kicker">Plants & Nature</div><h2>植物、安全、農作與自然</h2></div></div>
+<section id="plants" data-book-section><div class="section-head"><div><div class="kicker">Plants & Nature</div><h2>植物、安全、農作與自然</h2></div></div>
 <div class="grid3">
 <article class="product" data-book data-category="plants"><div class="cover">Poisonous Plants of North America & Taiwan<small>Visual Safety Guide • Safety Edition</small></div>
 <h3>Poisonous Plants of North America & Taiwan</h3><p>A Visual Safety Guide to Dangerous Wild Plants, Toxic Berries, Look-Alikes, and Plants You Should Never Eat.</p>
@@ -56,7 +57,7 @@
 <div class="product-foot"><span class="price">Coming Soon</span><span class="tag">Series</span></div></article>
 </div></section>
 
-<section id="monster"><div class="section-head"><div><div class="kicker">Monster Village</div><h2>妖怪村</h2></div></div>
+<section id="monster" data-book-section><div class="section-head"><div><div class="kicker">Monster Village</div><h2>妖怪村</h2></div></div>
 <div class="grid3">
 <article class="product" data-book data-category="monster"><div class="cover">Monster Village Funny Storybook<small>9 Silly Tales to Draw, Read, and Laugh</small></div>
 <h3>Monster Village Funny Storybook</h3><p>A colorful crayon-style collection of silly Monster Village adventures with drawing, surprises, friendship, and laughs.</p>
