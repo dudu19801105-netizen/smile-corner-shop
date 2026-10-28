@@ -3,6 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const buttons = [...document.querySelectorAll('[data-filter]')];
   const cards = [...document.querySelectorAll('[data-book]')];
   const sections = [...document.querySelectorAll('section[data-book-section]')];
+  const statusButtons = [...document.querySelectorAll('[data-status-filter]')];
+  let statusActive = 'all';
   const count = document.querySelector('#resultCount');
   const empty = document.querySelector('#emptyResults');
   const allowed = new Set(['all', ...buttons.map(button => button.dataset.filter)]);
@@ -14,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (const card of cards) {
       const category = card.dataset.category || '';
       const visible = (active === 'all' || category === active) &&
+        (statusActive === 'all' || card.dataset.status === statusActive) &&
         (!query || card.textContent.toLocaleLowerCase().includes(query));
       card.classList.toggle('hidden', !visible);
       if (visible) matches++;
@@ -26,6 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.toggle('active', selected);
       button.setAttribute('aria-pressed', String(selected));
     });
+    statusButtons.forEach(button => {
+      const selected = button.dataset.statusFilter === statusActive;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
     if (count) count.textContent = `找到 ${matches} 本書（書庫共 ${cards.length} 本）`;
     if (empty) empty.classList.toggle('hidden', matches > 0);
   }
@@ -35,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
     active = button.dataset.filter || 'all';
     if (active === 'all') history.replaceState(null, '', location.pathname + location.search);
     else history.replaceState(null, '', '#' + active);
+    apply();
+  }));
+  statusButtons.forEach(button => button.addEventListener('click', () => {
+    statusActive = button.dataset.statusFilter || 'all';
     apply();
   }));
   window.addEventListener('hashchange', () => {
