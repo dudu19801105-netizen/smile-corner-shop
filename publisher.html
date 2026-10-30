@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一稿多版工作台 | Smile Corner</title><meta name="description" content="在瀏覽器內將純文字書稿轉成電子閱讀 HTML 和可列印的版面，免費、不上傳。">
+<link rel="stylesheet" href="style.css">
+<style>
+.workspace{max-width:1000px;margin:auto}.workspace label{display:block;margin:14px 0 6px;font-weight:700}.workspace input,.workspace textarea,.workspace select{width:100%;padding:12px;border-radius:10px;background:#10243a;color:#fff;border:1px solid #608099;font:inherit}.workspace textarea{height:240px;resize:vertical}.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.workspace .preview{background:white;color:#17212b;padding:30px;border-radius:12px;min-height:200px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}.workspace .preview h2{color:#162535;white-space:normal;font-size:1.4rem}.workspace .hint{font-size:.92rem}.workspace .notice{margin:15px 0}@media(max-width:650px){.two{grid-template-columns:1fr}}
+</style></head><body><header><div class="wrap nav"><a class="brand" href="index.html">SMILE CORNER <span>SHOP</span></a><nav class="links"><a href="index.html">首頁</a><a href="books.html">書籍</a><a href="ai-studio.html">AI Studio</a><a href="publisher.html" aria-current="page">一稿多版</a></nav></div></header>
+<main class="wrap workspace"><div class="crumb"><a href="ai-studio.html">AI Studio</a> / 一稿多版</div><section>
+<div class="kicker">Free browser-only prototype</div><h1 style="font-size:clamp(2.3rem,5vw,4rem)">一稿多版出版工作台</h1>
+<p>貼上原創書稿或讀取 .txt 檔，產生可調字級的電子閱讀 HTML，或開啟適合列印的書稿版面，再使用瀏覽器「列印 → 儲存為 PDF」。</p>
+<div class="notice">🔒 所有內容只在目前瀏覽器處理，不會送到伺服器。這是試作工具，<strong>並非 AI 自動寫作、EPUB 轉檔、精裝封面製作或 KDP 合規驗證器</strong>。上傳 KDP 前仍須人工檢查頁面、字體、出血、裝訂邊及封面規格。</div>
+<div class="panel"><div class="two"><div><label for="bookTitle">英文書名</label><input id="bookTitle" maxlength="200" placeholder="My Original Book"></div><div><label for="author">作者</label><input id="author" maxlength="120" value="Smile Corner"></div><div><label for="paper">排版紙張</label><select id="paper"><option value="8.5in 11in">8.5 × 11 in</option><option value="8.5in 8.5in">8.5 × 8.5 in</option><option value="6in 9in">6 × 9 in</option></select></div><div><label for="typeSize">內文字級</label><select id="typeSize"><option value="12">12 pt（緊湊）</option><option value="14" selected>14 pt（標準）</option><option value="16">16 pt（大字）</option><option value="18">18 pt（特大字）</option></select></div></div>
+<label for="manuscript">書稿文字（空白行分段）</label><textarea id="manuscript" placeholder="Chapter 1&#10;&#10;Paste your original manuscript here..."></textarea>
+<label for="txtFile">或讀取本機 TXT 書稿（不會上傳）</label><input type="file" id="txtFile" accept=".txt,text/plain">
+<div class="actions"><button class="btn primary" type="button" id="previewBtn">更新預覽</button><button class="btn secondary" type="button" id="ebookBtn">下載電子閱讀 HTML</button><button class="btn secondary" type="button" id="printBtn">開啟紙本列印版</button></div><p id="message" role="status" aria-live="polite"></p>
+</div></section><section><h2>即時內容預覽</h2><div class="preview" id="preview">輸入書稿後按「更新預覽」。</div><p class="hint">提示：此版只支援純文字段落，沒有章節目錄、圖片、EPUB、封面或 AI 模型。長篇、插圖書與正式出版稿需進一步處理。</p></section></main>
+<footer><div class="wrap"><strong>Smile Corner</strong><p>Author review required before any release.</p></div></footer>
+<script>
+(()=>{'use strict';
+const $=x=>document.getElementById(x);
+const esc=s=>s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+const fields=()=>({title:$('bookTitle').value.trim()||'Untitled Book',author:$('author').value.trim()||'Smile Corner',paper:$('paper').value,size:Number($('typeSize').value),body:$('manuscript').value.trim()});
+function paragraphs(body){return body.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean).map(s=>'<p>'+esc(s).replace(/\n/g,'<br>')+'</p>').join('\n')}
+function doc(printMode){const v=fields();const inner='<h1>'+esc(v.title)+'</h1><p class="by">By '+esc(v.author)+'</p>'+paragraphs(v.body);
+const css='*{box-sizing:border-box}body{color:#111;background:#fff;font-family:Georgia,serif;font-size:'+v.size+'pt;line-height:1.55;overflow-wrap:break-word}main{max-width:48em;margin:auto}h1{text-align:center;font-size:1.7em;margin:2em 0 .5em}p{margin:0 0 .9em;orphans:2;widows:2}.by{text-align:center;margin-bottom:3em}';
+const printCss=printMode?'@page{size:'+v.paper+';margin:.8in .72in .8in .9in}body{margin:0}':'body{margin:2em auto;padding:0 1em}';
+return '<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>'+esc(v.title)+'</title><style>'+css+printCss+'</style></head><body><main>'+inner+'</main></body></html>'}
+function valid(){if(!$('manuscript').value.trim()){ $('message').textContent='請先輸入書稿或讀取 TXT 檔。';return false}return true}
+$('previewBtn').onclick=()=>{if(!valid())return;const v=fields(), preview=$('preview');preview.replaceChildren();const h=document.createElement('h2');h.textContent=v.title;preview.append(h);const author=document.createElement('p');author.textContent='By '+v.author;preview.append(author);const sample=document.createElement('p');sample.textContent=v.body.slice(0,2500)+(v.body.length>2500?'…':'');sample.style.fontSize=v.size+'pt';preview.append(sample);$('message').textContent='預覽已更新（最多展示前 2,500 字）。'};
+$('ebookBtn').onclick=()=>{if(!valid())return;const blob=new Blob([doc(false)],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='smile-corner-reading-edition.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);$('message').textContent='已建立 HTML 閱讀版，這不是 Kindle EPUB。'};
+$('printBtn').onclick=()=>{if(!valid())return;const w=window.open('','_blank');if(!w){$('message').textContent='瀏覽器阻擋新視窗，請允許彈出視窗後重試。';return}w.document.open();w.document.write(doc(true));w.document.close();$('message').textContent='列印版已開啟。請檢查頁面，再選「列印 → 儲存為 PDF」。'};
+$('txtFile').onchange=async e=>{const file=e.target.files?.[0];if(!file)return;if(file.size>5*1024*1024){$('message').textContent='目前僅支援 5 MB 以下的 TXT。';return}try{$('manuscript').value=await file.text();$('message').textContent='已讀取本機 TXT 檔，未上傳任何資料。'}catch{$('message').textContent='讀取失敗，請檢查檔案編碼。'}};
+})();
+</script></body></html>
