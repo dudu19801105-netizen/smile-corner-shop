@@ -73,4 +73,30 @@
 <article class="product" data-book data-category="fiction" data-status="pending"><div class="cover romance">Five Things Before Friday<small>A Bellwick Bookshop Mystery</small></div><h3>Five Things Before Friday</h3><p>A cozy bookshop mystery. Publication was approved in October 2026; check Amazon for current availability.</p><div class="tags"><span class="tag">Cozy Mystery</span><span class="tag">Amazon status to verify</span></div><div class="product-foot"><span class="price">Check availability on Amazon</span><a class="btn secondary" href="https://www.amazon.com/s?k=Five+Things+Before+Friday+Bellwick+Bookshop+Mystery" target="_blank" rel="noopener noreferrer">Find on Amazon</a></div></article></div></section></main>
 
 <footer><div class="wrap footer-grid"><div><strong>Smile Corner Shop</strong><p>Independent bookshop in progress.</p></div><div><strong>Browse</strong><p><a href="index.html">Home</a><br><a href="books.html">Books</a></p></div><div><strong>Coming next</strong><p><a href="https://www.amazon.com/s?k=Smile+Corner&i=stripbooks" target="_blank" rel="noopener noreferrer">Amazon Author Bookstore</a><br>More books coming soon</p></div></div></footer>
-</body></html>
+<style>
+.sc-preview-trigger{margin-top:12px}
+#sc-book-preview{border:1px solid #55768b;border-radius:18px;background:#10243a;color:#f6f8fb;max-width:min(560px,94vw);width:100%;padding:24px;box-shadow:0 20px 60px #000a}
+#sc-book-preview::backdrop{background:#000a}
+#sc-book-preview h2{margin:6px 0 12px;font-size:1.55rem}
+#sc-book-preview p{color:#d5e3ef;white-space:pre-wrap}
+#sc-book-preview .actions{margin-top:20px}
+#sc-book-preview-close{float:right;border:1px solid #55768b;color:white;background:#233f59;padding:5px 11px;border-radius:8px;cursor:pointer}
+</style>
+<dialog id="sc-book-preview" aria-labelledby="sc-preview-title"><button id="sc-book-preview-close" type="button" aria-label="關閉預覽">✕ 關閉</button><div class="kicker">Smile Corner / Website Preview</div><h2 id="sc-preview-title"></h2><p id="sc-preview-summary"></p><p id="sc-preview-status" class="small"></p><div class="actions"><a id="sc-preview-amazon" class="btn primary" href="#" target="_blank" rel="noopener noreferrer">到 Amazon 搜尋這本書 ↗</a></div><p class="small">本站目前展示書籍摘要，不提供未經授權的完整內頁。Amazon 搜尋結果及供貨狀態請以 Amazon 顯示為準。</p></dialog>
+<script>
+(()=>{"use strict";
+const dialog=document.querySelector("#sc-book-preview"),title=document.querySelector("#sc-preview-title"),summary=document.querySelector("#sc-preview-summary"),status=document.querySelector("#sc-preview-status"),amazon=document.querySelector("#sc-preview-amazon");
+document.querySelectorAll("article[data-book]").forEach(card=>{
+ const name=(card.querySelector("h3")?.textContent||"").trim(),desc=(card.querySelector("p")?.textContent||"").trim(),state=card.getAttribute("data-status");
+ const btn=document.createElement("button");btn.type="button";btn.className="btn secondary sc-preview-trigger";btn.textContent="👀 站內看書籍介紹";
+ btn.addEventListener("click",()=>{
+  title.textContent=name;summary.textContent=desc;status.textContent=state==="draft"?"草稿／概念：尚未出版":state==="available"?"已確認可購買":"書籍狀態待確認：請先核對 Amazon 商品頁";
+  if(state==="draft"){amazon.hidden=true;amazon.removeAttribute("href")}else{amazon.hidden=false;amazon.href="https://www.amazon.com/s?k="+encodeURIComponent(name+" Smile Corner")+"&i=stripbooks"}
+  if(typeof dialog.showModal==="function")dialog.showModal();else dialog.setAttribute("open","");
+ });
+ card.append(btn);
+});
+document.querySelector("#sc-book-preview-close").addEventListener("click",()=>{if(typeof dialog.close==="function")dialog.close();else dialog.removeAttribute("open")});
+dialog.addEventListener("click",e=>{if(e.target===dialog&&typeof dialog.close==="function")dialog.close()});
+})();
+</script></body></html>
