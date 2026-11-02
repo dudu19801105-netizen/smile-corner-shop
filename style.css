@@ -18,3 +18,18 @@ body{background:#fff;color:#141414;font-family:system-ui,-apple-system,"Segoe UI
 @media(max-width:780px){.hero h1{font-size:clamp(2.25rem,7.5vw,3.6rem)}.links{font-size:.85rem}.hero .lead{font-size:1rem}.hero-card .mini{grid-template-columns:1fr 1fr}}
 
 main strong[style*="color:#fff"]{color:#171717!important}
+
+
+/* Catalog covers and local AI, 2026-11-03 */
+.catalog-cover{height:320px;background:#f3f5f7;border-radius:14px;display:grid;place-items:center;padding:14px;overflow:hidden}
+.catalog-cover img{width:100%;height:100%;object-fit:contain;max-height:292px}
+.cover-fallback{padding:24px;font-size:1.35rem;font-weight:700;text-align:center}
+[hidden]{display:none!important}
+.ai-conversation{display:grid;gap:14px;margin-top:20px;max-height:620px;overflow:auto}
+.ai-message{padding:18px;border:1px solid var(--line);border-radius:12px;background:#f7f9fc;color:#172b40}
+.ai-message p{white-space:pre-wrap;overflow-wrap:anywhere;color:inherit}
+#aiProgress{width:100%;margin-top:16px}button:disabled{opacity:.55;cursor:not-allowed}
+.studio input,.studio textarea,.studio select,.studio .output,.field input,.field select,.field textarea,.brief{background:#fff;color:#172b40}
+.studio .output,.brief{border-color:#bcc9d5}
+.catalog-cover + h3{margin-top:16px}
+@media(max-width:640px){.catalog-cover{height:290px}.catalog-cover img{max-height:262px}.ai-message{padding:14px}}

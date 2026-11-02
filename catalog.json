@@ -1,0 +1,80 @@
+[
+  {
+    "title": "How to Build a PC for Beginners",
+    "category": "pc",
+    "versions": {
+      "Amazon": "B0HGBPF565"
+    },
+    "description": "循序學習挑選零件、組裝電腦與首次設定。"
+  },
+  {
+    "title": "BUILD YOUR FIRST PC",
+    "category": "pc",
+    "versions": {
+      "Amazon": "B0HJTVBDZ1"
+    },
+    "description": "Choosing Parts • Building • First Boot：從零件選購到第一次開機。"
+  },
+  {
+    "title": "BIOS & UEFI for Beginners",
+    "category": "pc",
+    "versions": {
+      "Amazon": "B0HK3487PP"
+    },
+    "description": "Boot, Hardware, Settings, and Recovery：了解開機、硬體設定與復原。"
+  },
+  {
+    "title": "Electronics Troubleshooting for Beginners",
+    "category": "pc",
+    "versions": {
+      "Kindle": "B0HHYKRJYX",
+      "平裝": "B0HHYBPQ63"
+    },
+    "description": "電子設備故障排除入門，購買前請核對商品頁的版本與完整介紹。"
+  },
+  {
+    "title": "Space Builders",
+    "category": "fiction",
+    "versions": {
+      "Kindle": "B0H3TLVFBC",
+      "平裝": "B0HJ26HRZY"
+    },
+    "description": "從地球走向星際的未來想像。完整內容與版本請見 Amazon 商品介紹。"
+  },
+  {
+    "title": "Corner Empire",
+    "category": "fiction",
+    "versions": {
+      "Kindle": "B0HHZ837BG",
+      "平裝": "B0HHZJ888M"
+    },
+    "description": "Smile Corner 原創作品，電子書與紙本版本分開列出。"
+  },
+  {
+    "title": "The House That Kept Your Secret",
+    "category": "fiction",
+    "versions": {
+      "Kindle": "B0HHZ86W6H",
+      "平裝": "B0HHZ7BRJ3"
+    },
+    "description": "一部關於愛、失落與引領她回家的謎團的小說。"
+  },
+  {
+    "title": "Life Goes On Without You",
+    "category": "fiction",
+    "versions": {
+      "Kindle": "B0HHYZK7T8",
+      "平裝": "B0HJ1MP49Z"
+    },
+    "description": "Smile Corner 原創小說，請依習慣選擇 Kindle 或平裝版本。"
+  },
+  {
+    "title": "The Next Job, A Better Version of Me",
+    "category": "fiction",
+    "versions": {
+      "Kindle": "B0HHYPXBNK",
+      "平裝": "B0HHZ6NGMG"
+    },
+    "description": "Smile Corner 故事作品；電子書與平裝版本請在 Amazon 核對完整書名、語言與內容。"
+  }
+]
