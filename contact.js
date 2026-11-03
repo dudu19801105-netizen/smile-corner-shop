@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   const $=id=>document.getElementById(id);
-  let recipient='', summary='';
+  let recipient='', copyRecipient='', summary='';
   const fields=['clientName','clientEmail','service','format','deadline','budget','details'];
   const value=id=>$(id).value.trim();
   function make() {
@@ -12,14 +12,15 @@
   fetch('contact-config.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(config=>{
     if(typeof config.email==='string' && /^[^\s@<>?&#]+@[^\s@<>?&#]+\.[^\s@<>?&#]+$/.test(config.email)) {
       recipient=config.email;
-      $('contactState').textContent='合作信箱：'+recipient+'。填寫後可開啟郵件軟體，檢查內容並自行寄出。';
+      if(typeof config.cc==='string' && /^[^\s@<>?&#]+@[^\s@<>?&#]+\.[^\s@<>?&#]+$/.test(config.cc)) copyRecipient=config.cc;
+      $('contactState').textContent='合作信箱：'+recipient+(copyRecipient?'；副本：'+copyRecipient:'')+'。填寫後可開啟郵件軟體，檢查內容並自行寄出。';
       $('mail').disabled=false;
     } else $('contactState').textContent='合作收件信箱尚未啟用。目前可以整理、複製與下載需求摘要；網站不會寄送資料。';
   }).catch(()=>{$('contactState').textContent='暫時無法取得收件設定。仍可複製或下載摘要；網站尚未寄出資料。';});
   $('briefForm').addEventListener('submit',event=>{event.preventDefault();make();$('message').textContent='需求摘要已準備好，尚未寄送。';});
   $('mail').addEventListener('click',()=>{
     if(!recipient || !$('briefForm').reportValidity())return;
-    make();const href='mailto:'+recipient+'?subject='+encodeURIComponent('微笑角落合作詢問｜'+value('service'))+'&body='+encodeURIComponent(summary);
+    make();const href='mailto:'+recipient+'?'+(copyRecipient?'cc='+encodeURIComponent(copyRecipient)+'&':'')+'subject='+encodeURIComponent('微笑角落合作詢問｜'+value('service'))+'&body='+encodeURIComponent(summary);
     window.location.href=href;
     $('message').textContent='正在嘗試開啟郵件軟體，尚未寄送。請在郵件軟體中確認收件人並按寄出。若沒有開啟，可複製摘要寄至 '+recipient+'。';
   });
